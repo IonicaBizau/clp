@@ -1,27 +1,44 @@
-// Dependencies
-var Clp = require("../lib");
+"use strict";
 
-// Arguments
-var args = ["node", "foo", "--name", "Alice", "-a", "13"];
+const tester = require("tester")
+    , clp = require("..")
+    ;
 
-// Create a new parser
-var parser = new Clp(args);
+tester.describe("clp", test => {
 
-// Handle -h and --help
-parser.addHelpOption();
+    test.should("parse complex options", () => {
+	test.expect(clp(["x", "-fo", "--test", "bar"])).toEqual({
+            f: true,
+            o: true,
+            test: "bar",
+	    _ : ["x"]
+	});
+    });
 
-// Handle -v and --version
-parser.addVersionOption();
+    test.should("handle --", () => {
+	test.expect(clp(["-f", "--", "-fo", "--test", "bar"])).toEqual({
+            f: true,
+	    _ : ["-fo", "--test", "bar"]
+	});
+    });
 
-// Create options and add them
-var nameOption = new Clp.Option(["name", "n"], "Your name", "name", "Alice")
-  , ageOption = new Clp.Option(["age", "a"], "Your age", "age")
-  ;
+    test.it("boolean options", () => {
+	var argv = clp([ "-x", "-z", "one", "two", "three" ]);
+	test.expect(argv).toEqual({
+	    x: true,
+	    z: "one",
+	    _ : [ "two", "three" ]
+	});
+    });
 
-parser.addOption(nameOption);
-parser.addOption(ageOption);
+    test.it("boolean and --x=true", () => {
+	var parsed = clp(["--boool", "--other=true"]);
 
-parser.process();
+	test.expect(parsed.boool).toBe(true);
+	test.expect(parsed.other).toBe("true");
 
-console.log(nameOption);
-console.log(ageOption);
+	parsed = clp(["--boool", "--other=false"]);
+	test.expect(parsed.boool).toEqual(true);
+	test.expect(parsed.other).toEqual("false");
+    });
+});
