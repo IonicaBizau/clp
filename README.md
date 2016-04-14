@@ -16,7 +16,6 @@ $ npm i --save clp
 
             
 ## :clipboard: Example
-
         
 
 ```js
