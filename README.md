@@ -1,274 +1,96 @@
-[![clp](http://i.imgur.com/Gcn3nvW.png)](#)
-
 # clp [![PayPal](https://img.shields.io/badge/%24-paypal-f39c12.svg)][paypal-donations] [![Version](https://img.shields.io/npm/v/clp.svg)](https://www.npmjs.com/package/clp) [![Downloads](https://img.shields.io/npm/dt/clp.svg)](https://www.npmjs.com/package/clp) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)
 
 > A tiny and fast command line arguments parser and help generator.
 
-## Installation
+## :rocket: Migration from `3.x.x` to `4.x.x`
 
+As of `4.0.0` the scope of this package will be to simply parse
+arguments. Use [**`tilda`**](https://github.com/IonicaBizau/tilda)
+for a high-level interface for building cli tools.
+
+## :cloud: Installation
+    
 ```sh
 $ npm i --save clp
 ```
 
-## Example
+            
+## :clipboard: Example
+
+        
 
 ```js
 #!/usr/bin/env node
 
-// Dependencies
-var Clp = require("clp");
+const clp = require("clp");
 
-// Create options and add them
-var nameOption = new Clp.Option(["name", "n"], "Someone's name", "name", "Alice")
-  , ageOption = new Clp.Option(["age", "a"], "Someone's age", "age")
-  ;
+console.log(clp(["grep", "-ri", "foo"]));
+// { _: [ 'grep' ], r: true, i: 'foo' }
 
-// Create a new parser
-var parser = new Clp({
-    name: "Name Age"
-  , version: "v1.0"
-  , process: false
-  , exe: "name-age"
-  , examples: "name-age -a 10 --name Bob"
-  , docs_url: "https://github.com/IonicaBizau/node-clp"
-  , notes: "These are some final notes."
-}, [nameOption, ageOption]);
-
-parser.addExample("name-age -a 5 # will default the name to \"Alice\"");
-
-parser.process();
-
-// Validate the age
-if (isNaN(parseInt(ageOption.value)) || ageOption.value < 0) {
-    return console.error("Invalid age.");
-}
-
-// Validate the name
-if (!nameOption.value) {
-    return console.error("Invalid name.");
-}
-
-// Use the values
-console.log(nameOption.value + " is " + ageOption.value + " year old.");
+console.log(clp(["--name", "Johnny", "-a", "20", "--location", "Earth", "--no-student"]));
+// { _: [], name: 'Johnny', a: 20, location: 'Earth', student: false }
 ```
-
-## Documentation
-
-### `CLP.Option(aliases, description, name, def)`
-Creates a new `CLPOption` instance.
-
-Usages:
-
-```js
-CLP.Option(["age", "a"], "The age value.", "age", 20);
-CLP.Option("age", "The age value.", "age", 20);
-CLP.Option({
-    aliases: ["age", "a"]
-  , description: "The age value."
-  , name: "age"
-  , def: 20
-  , handler: function (opt) {
-       // Do something with opt
-    }
-});
-```
+    
+## :memo: Documentation
+        
+### `clp(args)`
+Parses the cli arguments.
 
 #### Params
-- **Array|Object** `aliases`: An array of strings representing the aliases  (e.g. `["name", "n"]`), a string representing a single alias (e.g. `"name"`)
- or an object containing the following fields:
-
- - `aliases` (Array): An array of strings representing the
-    aliases (e.g. `["name", "n"]`)
- - `def` (Anything): The default value.
- - `description` (String): The option description.
- - `name` (String): The option name. If provided, the parser will expect a value otherwise
-   will return or display an error.
- - `handler` (Function): The option handler which will be called when the
-   option is found in the arguments. The first parameter is the option
-   object and the scope is the `CLP` instance.
-- **String** `description`: The option description.
-- **String** `name`: The option name.
-- **Anything** `def`: The default value.
+- **Array** `args`: The arguments to parse (default: the process arguments).
 
 #### Return
-- **CLPOption** An object containing the following fields:
- - `aliases` (Array): An array of strings containing the computed aliases,
-    the single letter being the first ones (e.g. `["-n", "--name"]`).
- - `value` (null|String|DefaultValue): The option value which was found
-    after processing the arguments.
- - `def` (Anything): The provided default value.
- - `description` (String): The option description.
- - `name` (String): The option name.
- - `is_provided` (Boolean): A flag if the option was or not been provided.
+- **Object** An object containing the parsed arguments.
 
-### `CLP(args, options, clpOptions)`
-Creates a new `CLP` (command line parser) instance.
-
-Usage
-
-```js
-var parser = new CLP(); // will take the arguments from `process.argv`
-var parser = new CLP(args); // default options, empty clpOptions
-var parser = new CLP(options, clpOptions); // default arguments
-var parser = new CLP(args, clpOptions); // default options
-var parser = new CLP(args, options, clpOptions); // pass everything
-var parser = new CLP("some command", ...); // pass a command string instead of arguments
-```
-
-#### Params
-- **Array|String** `args`: An array of strings with the arguments or the command itself.
-- **Object** `options`: An object containing the following fields:
- - `allow_exit` (Boolean): A flag to allow exit or not (e.g. when `-h`
-   is passed). This is useful when *CLP* is used in executable scripts,
-   however, when you only want to parse an array you should turn this
-   off (default: `true`).
- - `help_opt` (Boolean): A flag to add the help option (default: `true`).
- - `version_opt` (Boolean): A flag to add the version option (default: `true`).
- - `name` (String): The application name (default: `"No Name"`).
- - `exe` (String): The executable name (default: `"no-name"`).
- - `version` (String): The application version (default: `"No Version"`).
- - `process` (Boolean): A flag to process the CLP options imediatelly (default: `false`).
- - `docs_url` (String): The documentation url (default: `""`).
- - `notes` (String): Final notes placed between examples and documentation
-   url in help content (default: `""`).
- - `examples` (String|Array): A string or an array of string containing examples.
-- **Array** `clpOptions`:
-
-#### Return
-- **CLP** The `CLP` instance.
-
-### `addHelpOption(args, desc)`
-Adds the help option.
-
-#### Params
-- **Array** `args`: Optional alias options for the help option (default: `["h", "help"]`).
-- **String** `desc`: The help description (default: `"Displays this help."`).
-
-#### Return
-- **CLP** The `CLP` instance.
-
-### `addVersionOption(args, desc)`
-Adds the help option.
-
-#### Params
-- **Array** `args`: Optional alias options for the version option (default: `["h", "help"]`).
-- **String** `desc`: The version description (default: `"Displays version information."`).
-
-#### Return
-- **CLP** The `CLP` instance.
-
-### `addOption(opt)`
-Adds a new option to parse.
-
-#### Params
-- **CLPOption** `opt`: The `CLPOption` value to add.
-
-#### Return
-- **CLP** The `CLP` instance.
-
-### `addExample(example)`
-Adds a new example.
-
-#### Params
-- **String** `example`: The example to add.
-
-#### Return
-- **CLP** The `CLP` instance.
-
-### `process()`
-Processes the arguments and adds the values in the options.
-
-#### Return
-- **Object** An object containing the following fields:
- - `error` (Error|null): An error that appeared during the arguments parsing.
- - `_` (Array): An array of strings representing the values which are not options, nor values, but other arguments (e.g. `some-tool --foo bar other arguments`).
-
-### `error(err_code, fields)`
-Creates an error by getting the error code and the error fields.
-
-#### Params
-- **String** `err_code`: The error code.
-- **Object** `fields`: An object with the error fields.
-
-#### Return
-- **Error** The error which was built.
-
-### `displayHelp()`
-Generates the help content and returns it.
-
-#### Return
-- **String** The help information.
-
-### `displayVersion()`
-Returns the version information.
-
-#### Return
-- **String** The version information.
-
-## How to contribute
+        
+## :yum: How to contribute
 Have an idea? Found a bug? See [how to contribute][contributing].
 
-## Where is this library used?
+## :cake: Thanks
+This package is heavily based on [`minimist`](https://github.com/substack/minimist). :sparkles:
+
+## :dizzy: Where is this library used?
 If you are using this library in one of your projects, add it in this list. :sparkles:
 
- - [`a-csv`](https://github.com/jillix/a-csv) by jillix
+ - [`a-csv`](https://github.com/jillix/a-csv) (by jillix)—A lightweight CSV parser.
+ - [`arc-asm`](https://github.com/IonicaBizau/arc-assembler)—An ARC assembler written in Node.JS.
+ - [`birthday`](https://github.com/IonicaBizau/birthday)—Know when a friend's birthday is coming.
+ - [`blah`](https://github.com/IonicaBizau/blah)—A command line tool to optimize the repetitive actions.
+ - [`cdnjs-importer`](https://github.com/cdnjs/cdnjs-importer)—Easy way to import a library into CDNJS.
+ - [`cli-gh-cal`](https://github.com/IonicaBizau/cli-gh-cal)—GitHub like calendar graphs in command line.
+ - [`diable`](https://github.com/IonicaBizau/diable)—Daemonize the things out.
+ - [`emojer-cli`](https://github.com/IonicaBizau/emojer-cli#readme)—Command line tool for emojer.
+ - [`engine-tools`](https://github.com/jillix/engine-tools) (by jillix)—Engine Tools library and CLI app.
+ - [`gh-notifier`](https://bitbucket.org/IonicaBizau/gh-notifier#readme)—Receive desktop notifications from your GitHub dashboard.
+ - [`ghcal`](https://github.com/IonicaBizau/ghcal)—See the GitHub contributions calendar of a user in the command line.
+ - [`git-issues`](https://github.com/softwarescales/git-issues) (by Gabriel Petrovay)—Git issues extension to list issues of a Git project
+ - [`git-stats`](https://github.com/IonicaBizau/git-stats)—Local git statistics including GitHub-like contributions calendars.
+ - [`git-stats-importer`](https://github.com/IonicaBizau/git-stats-importer)—Imports your commits from a repository into git-stats history.
+ - [`github-emojify`](https://github.com/IonicaBizau/github-emojifiy#readme)—Emojify your GitHub repository descriptions.
+ - [`github-labeller`](https://github.com/IonicaBizau/github-labeller#readme)—Automagically create issue labels in your GitHub projects.
+ - [`github-stats`](https://github.com/IonicaBizau/github-stats)—Visualize stats about GitHub users and projects in your terminal.
+ - [`gpm`](https://github.com/IonicaBizau/gpm)—npm + git = gpm - Install NPM packages and dependencies from git repositories.
+ - [`image-to-ascii-cli`](https://github.com/IonicaBizau/image-to-ascii-cli#readme)—View images in text format, in your terminal.
+ - [`kindly-license`](https://github.com/IonicaBizau/kindly-license)—A human readable license for projects created by human-beings.
+ - [`name-it`](https://github.com/IonicaBizau/name-it#readme)—Generate project names from given keywords.
+ - [`namly`](https://github.com/IonicaBizau/namly#readme)—A tool for helping you to choose npm package names.
+ - [`namy`](https://github.com/IonicaBizau/namy)—Gets the name of the exported function.
+ - [`np-init-cli`](https://github.com/IonicaBizau/np-init-cli#readme)—CLI for starting a new npm package.
+ - [`npmreserve`](https://github.com/IonicaBizau/npmreserve)—Reserve package names on NPM.
+ - [`packy`](https://github.com/IonicaBizau/packy#readme)—Set default fields in your package.json files.
+ - [`photon-browser`](https://github.com/IonicaBizau/photon-browser#readme)—A tiny web browser based on Photon and Electron.
+ - [`rucksack`](https://github.com/IonicaBizau/rucksack#readme)—Bundle js files by replacing the require calls in-place.
+ - [`ssh-remote`](https://github.com/IonicaBizau/ssh-remote)—Automagically switch on the SSH remote url in a Git repository.
+ - [`statique`](https://github.com/IonicaBizau/node-statique)—A Node.JS static server module with built-in cache options and route features.
+ - [`tinyreq-cli`](https://github.com/IonicaBizau/tinyreq-cli#readme)—A cli tool for making http(s) requests. CLI for tinyreq.
+ - [`tithe`](https://github.com/IonicaBizau/tithe)—Organize and track the tithe payments.
+ - [`web-term`](https://github.com/IonicaBizau/web-term)—A full screen terminal in your browser.
+ - [`wrabbit`](https://github.com/jillix/wrabbit) (by jillix)—Wrap scripts by providing the wrapping function.
 
- - [`birthday`](https://github.com/IonicaBizau/birthday)
-
- - [`blah`](https://github.com/IonicaBizau/blah)
-
- - [`cdnjs-importer`](https://github.com/cdnjs/cdnjs-importer)
-
- - [`cli-gh-cal`](https://github.com/IonicaBizau/cli-gh-cal)
-
- - [`diable`](https://github.com/IonicaBizau/diable)
-
- - [`engine-tools`](https://github.com/jillix/engine-tools) by jillix
-
- - [`gh-notifier`](https://bitbucket.org/IonicaBizau/gh-notifier#readme)
-
- - [`ghcal`](https://github.com/IonicaBizau/ghcal)
-
- - [`git-issues`](https://github.com/softwarescales/git-issues) by Gabriel Petrovay
-
- - [`git-stats`](https://github.com/IonicaBizau/git-stats)
-
- - [`git-stats-importer`](https://github.com/IonicaBizau/git-stats-importer)
-
- - [`github-emojify`](https://github.com/IonicaBizau/github-emojifiy#readme)
-
- - [`github-labeller`](https://github.com/IonicaBizau/github-labeller#readme)
-
- - [`github-stats`](https://github.com/IonicaBizau/github-stats)
-
- - [`gpm`](https://github.com/IonicaBizau/gpm)
-
- - [`kindly-license`](https://github.com/IonicaBizau/kindly-license)
-
- - [`name-it`](https://github.com/IonicaBizau/name-it#readme)
-
- - [`namly`](https://github.com/IonicaBizau/namly#readme)
-
- - [`namy`](https://github.com/IonicaBizau/namy)
-
- - [`npmreserve`](https://github.com/IonicaBizau/npmreserve)
-
- - [`ssh-remote`](https://github.com/IonicaBizau/ssh-remote)
-
- - [`statique`](https://github.com/IonicaBizau/node-statique)
-
- - [`tinyreq`](https://github.com/IonicaBizau/tinyreq)
-
- - [`tithe`](https://github.com/IonicaBizau/tithe)
-
- - [`web-term`](https://github.com/IonicaBizau/web-term)
-
- - [`wrabbit`](https://github.com/jillix/wrabbit) by jillix
-
-## License
-
+## :scroll: License
+    
 [MIT][license] © [Ionică Bizău][website]
-
+    
 [paypal-donations]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RVXDDLKKLQRJW
 [donate-now]: http://i.imgur.com/6cMbHOC.png
 
