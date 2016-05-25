@@ -1,6 +1,6 @@
 {
   "name": "clp",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "A tiny and fast command line arguments parser.",
   "main": "lib/index.js",
   "directories": {
@@ -60,6 +60,7 @@
     "src/",
     "resources/",
     "menu/",
+    "scripts/",
     "cli.js",
     "index.js"
   ]
