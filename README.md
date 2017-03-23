@@ -8,9 +8,7 @@
 ## :rocket: Migration from `3.x.x` to `4.x.x`
 
 As of `4.0.0` the scope of this package will be to simply parse
-
 arguments. Use [**`tilda`**](https://github.com/IonicaBizau/tilda)
-
 for a high-level interface for building cli tools.
 
 
@@ -36,6 +34,15 @@ console.log(clp(["grep", "-ri", "foo"]));
 console.log(clp(["--name", "Johnny", "-a", "20", "--location", "Earth", "--no-student"]));
 // { _: [], name: 'Johnny', a: 20, location: 'Earth', student: false }
 ```
+
+## :question: Get Help
+
+There are few ways to get help:
+
+ 1. Please [post questions on Stack Overflow](https://stackoverflow.com/questions/ask). You can open issues with questions, as long you add a link to your Stack Overflow question.
+ 2. For bug reports and feature requests, open issues. :bug:
+ 3. For direct and quick help from me, you can [use Codementor](https://www.codementor.io/johnnyb). :rocket:
+
 
 ## :memo: Documentation
 
