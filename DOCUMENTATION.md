@@ -6,6 +6,7 @@ You can see below the API reference of this module.
 Parses the cli arguments.
 
 #### Params
+
 - **Array** `args`: The arguments to parse (default: the process arguments).
 
 #### Return
