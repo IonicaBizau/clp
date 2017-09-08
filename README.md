@@ -9,11 +9,8 @@
 
 ## :rocket: Migration from `3.x.x` to `4.x.x`
 
-
 As of `4.0.0` the scope of this package will be to simply parse
-
 arguments. Use [**`tilda`**](https://github.com/IonicaBizau/tilda)
-
 for a high-level interface for building cli tools.
 
 
