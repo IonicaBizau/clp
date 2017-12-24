@@ -20,7 +20,11 @@ for a high-level interface for building cli tools.
 ## :cloud: Installation
 
 ```sh
-$ npm i --save clp
+# Using npm
+npm install --save clp
+
+# Using yarn
+yarn add clp
 ```
 
 
