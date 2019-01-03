@@ -3,7 +3,9 @@
 
 # clp
 
- [![Support me on Patreon][badge_patreon]][patreon] [![Buy me a book][badge_amazon]][amazon] [![PayPal][badge_paypal_donate]][paypal-donations] [![Ask me anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/IonicaBizau/ama) [![Travis](https://img.shields.io/travis/IonicaBizau/clp.svg)](https://travis-ci.org/IonicaBizau/clp/) [![Version](https://img.shields.io/npm/v/clp.svg)](https://www.npmjs.com/package/clp) [![Downloads](https://img.shields.io/npm/dt/clp.svg)](https://www.npmjs.com/package/clp)
+ [![Support me on Patreon][badge_patreon]][patreon] [![Buy me a book][badge_amazon]][amazon] [![PayPal][badge_paypal_donate]][paypal-donations] [![Ask me anything](https://img.shields.io/badge/ask%20me-anything-1abc9c.svg)](https://github.com/IonicaBizau/ama) [![Travis](https://img.shields.io/travis/IonicaBizau/clp.svg)](https://travis-ci.org/IonicaBizau/clp/) [![Version](https://img.shields.io/npm/v/clp.svg)](https://www.npmjs.com/package/clp) [![Downloads](https://img.shields.io/npm/dt/clp.svg)](https://www.npmjs.com/package/clp) [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/johnnyb?utm_source=github&utm_medium=button&utm_term=johnnyb&utm_campaign=github)
+
+<a href="https://www.buymeacoffee.com/H96WwChMy" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 
 > A tiny and fast command line arguments parser.
 
@@ -78,10 +80,11 @@ Have an idea? Found a bug? See [how to contribute][contributing].
 
 ## :sparkling_heart: Support my projects
 
-I open-source almost everything I can, and I try to reply everyone needing help using these projects. Obviously,
+I open-source almost everything I can, and I try to reply to everyone needing help using these projects. Obviously,
 this takes time. You can integrate and use these projects in your applications *for free*! You can even change the source code and redistribute (even resell it).
 
 However, if you get some profit from this or just want to encourage me to continue creating stuff, there are few ways you can do it:
+
 
  - Starring and sharing the projects you like :rocket:
  - [![Buy me a book][badge_amazon]][amazon]—I love books! I will remember you after years if you buy me one. :grin: :book:
@@ -90,6 +93,7 @@ However, if you get some profit from this or just want to encourage me to contin
  - **Bitcoin**—You can send me bitcoins at this address (or scanning the code below): `1P9BRsmazNQcuyTxEqveUsnf5CERdq35V6`
 
     ![](https://i.imgur.com/z6OQI95.png)
+
 
 Thanks! :heart:
 
@@ -107,6 +111,7 @@ If you are using this library in one of your projects, add it in this list. :spa
  - [`birthday`](https://github.com/IonicaBizau/birthday)—Know when a friend's birthday is coming.
  - [`cdnjs-importer`](https://github.com/cdnjs/cdnjs-importer)—Easy way to import a library into CDNJS.
  - [`diable`](https://github.com/IonicaBizau/diable)—Daemonize the things out.
+ - [`electron-comrade`](https://github.com/felixrieseberg/electron-comrade#readme) (by Felix Rieseberg)—Electron Comrade is a CLI tool that allows you to run Electron apps with different versions of Electron. This is useful during development and testing, enabling you to quickly test a built app with different versions of Electron or even custom builds.
  - [`emojer-cli`](https://github.com/IonicaBizau/emojer-cli#readme)—Command line tool for emojer.
  - [`engine-tools`](https://github.com/jillix/engine-tools) (by jillix)—Engine Tools library and CLI app.
  - [`gh-notifier`](https://bitbucket.org/IonicaBizau/gh-notifier#readme)—Receive desktop notifications from your GitHub dashboard.
@@ -117,13 +122,16 @@ If you are using this library in one of your projects, add it in this list. :spa
  - [`github-labeller`](https://github.com/IonicaBizau/github-labeller#readme)—Automagically create issue labels in your GitHub projects.
  - [`github-stats`](https://github.com/IonicaBizau/github-stats)—Visualize stats about GitHub users and projects in your terminal.
  - [`gpm`](https://github.com/IonicaBizau/gpm)—npm + git = gpm - Install NPM packages and dependencies from git repositories.
+ - [`grokodile`](https://github.com/stripedpajamas/grokodile#readme) (by Peter Squicciarini)—get your code/website publicly accessible while developing
  - [`image-to-ascii-cli`](https://github.com/IonicaBizau/image-to-ascii-cli#readme)—View images in text format, in your terminal.
  - [`kindly-license`](https://github.com/IonicaBizau/kindly-license)—A human readable license for projects created by human-beings.
  - [`name-it`](https://github.com/IonicaBizau/name-it#readme)—Generate project names from given keywords.
  - [`namly`](https://github.com/IonicaBizau/namly#readme)—A tool for helping you to choose npm package names.
  - [`namy`](https://github.com/IonicaBizau/namy)—Gets the name of the exported function.
+ - [`no-one-left-behind`](https://github.com/Zalastax/no-one-left-behind#readme)—Every package is invited
  - [`npmreserve`](https://github.com/IonicaBizau/npmreserve)—Reserve package names on NPM.
  - [`photon-browser`](https://github.com/IonicaBizau/photon-browser#readme)—A tiny web browser based on Photon and Electron.
+ - [`ssb-chat`](https://github.com/stripedpajamas/scat#readme) (by Peter Squicciarini)—scuttlebutt chat
  - [`ssh-remote`](https://github.com/IonicaBizau/ssh-remote)—Automagically switch on the SSH remote url in a Git repository.
  - [`statique`](https://github.com/IonicaBizau/statique)—A Node.JS static server module with built-in cache options and route features.
  - [`tilda`](https://github.com/IonicaBizau/tilda)—Tiny module for building command line tools.
@@ -135,14 +143,15 @@ If you are using this library in one of your projects, add it in this list. :spa
 
 [MIT][license] © [Ionică Bizău][website]
 
-[badge_patreon]: http://ionicabizau.github.io/badges/patreon.svg
-[badge_amazon]: http://ionicabizau.github.io/badges/amazon.svg
-[badge_paypal]: http://ionicabizau.github.io/badges/paypal.svg
-[badge_paypal_donate]: http://ionicabizau.github.io/badges/paypal_donate.svg
+
+[badge_patreon]: https://ionicabizau.github.io/badges/patreon.svg
+[badge_amazon]: https://ionicabizau.github.io/badges/amazon.svg
+[badge_paypal]: https://ionicabizau.github.io/badges/paypal.svg
+[badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
+
 [patreon]: https://www.patreon.com/ionicabizau
 [amazon]: http://amzn.eu/hRo9sIZ
 [paypal-donations]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RVXDDLKKLQRJW
-[donate-now]: http://i.imgur.com/6cMbHOC.png
 
 [license]: http://showalicense.com/?fullname=Ionic%C4%83%20Biz%C4%83u%20%3Cbizauionica%40gmail.com%3E%20(https%3A%2F%2Fionicabizau.net)&year=2015#license-mit
 [website]: https://ionicabizau.net
