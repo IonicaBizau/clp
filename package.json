@@ -1,6 +1,6 @@
 {
   "name": "clp",
-  "version": "4.0.12",
+  "version": "4.0.13",
   "description": "A tiny and fast command line arguments parser.",
   "main": "lib/index.js",
   "directories": {
@@ -63,6 +63,8 @@
     "menu/",
     "cli.js",
     "index.js",
+    "index.d.ts",
+    "package-lock.json",
     "bloggify.js",
     "bloggify.json",
     "bloggify/"
